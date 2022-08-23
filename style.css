@@ -1,0 +1,25 @@
+*{
+    padding :0%;
+    margin: 0%;
+    font-family: 'Open Sans', sans-serif;
+    
+}
+
+body{
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 200vh;
+}
+
+html, body{
+    font-size: 100%;
+    height: 100%;
+}
+html{
+    background-color: aqua;
+}

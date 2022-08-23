@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    
+    
+</head>
+
+<body>
+    
+
+    <div class="box">
+        <div class="search">
+            <div>
+                <input type="text" placeholder="Type your City name" id="Cityname">
+            </div>
+            <div>
+                <input type="button" value="Search" id="btn">
+            </div>
+            
+        </div>
+        <div class="wave1"></div>
+        <div class="wave2"></div>
+        <div class="wave3"></div>
+
+        <div id="weathercon">
+            <i class="fa-solid fa-sun" style="color: rgb(211, 211, 39)"></i>
+        </div>
+        <div class="info">
+            <h2 class="location"><i class="fa-solid fa-street-view"></i>{%city%}, {%country%}</h2>
+            <p id="date"></p>
+            <h1 class="temp">{%tempval%}&deg;C</h1>
+            <h3 class="minmax">Min: {%tempmin%}&deg;C | Max: {%tempmax%}&deg;C</h3>
+
+
+        </div>
+        <div>
+            <h2 id="humidity">Humidity : {%humidity%}</h2>
+        </div>
+    </div>
+    <script>
+        const currDate = document.getElementById('date');
+        const weathercon = document.getElementById('weathercon');
+        const btn = document.getElementById('btn');
+        // const cityname = document.getElementById('cityname');
+
+        // let name = cityname.innerText;
+//         function getVal() {
+//   const val = document.querySelector('input').value;
+//   addEventListener(val);
+// }
+      
+
+        btn.addEventListener('click',()=>{
+            let name = (document.querySelector('input').value);
+            console.log(name);
+        });
+        
+        // let name = (document.querySelector('input').value);
+
+
+        
+        
+        console.log(name);
+
+        let tempstatus = "{%humidity%}";
+        if(tempstatus>70){
+            weathercon.innerHTML = "<i class='fa-solid fa-droplet-degree' style = 'colour : blue'></i>";
+        }
+        else if(tempstatus<50 && tempstatus>35){
+            weathercon.innerHTML = "<i class='fa-solid fa-cloud'></i>";
+        }
+        else if(tempstatus<35){
+            weathercon.innerHTML = "<i class='fa-solid fa-cloud-sun'></i>";
+        }
+        
+
+
+var weekday = new Array(7);
+var months = new Array(12);
+    
+const getcurrentdate = ()=>{
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+    
+
+    let currenttime = new Date();
+    let day = weekday[currenttime.getDay()];
+    
+
+    months[0] = "January";
+    months[1] = "February";
+    months[2] = "March";
+    months[3] = "April";
+    months[4] = "May";
+    months[5] = "June";
+    months[6] = "July";
+    months[7] = "August";
+    months[8] = "September";
+    months[9] = "October";
+    months[10] = "November";
+    months[11] = "December";
+
+    let hours = currenttime.getHours();
+    let mins = currenttime.getMinutes();
+    let Suffix = "";
+
+    if(hours<12){
+        suffix = "AM";
+    }
+    else if(hours>12){
+        hours = hours -12;
+        suffix = "PM";
+    }
+
+    if(mins<10){
+        mins = "0" + mins;
+    }
+    
+    let time = `${hours} : ${mins} ${suffix}`;
+
+    return (`${day}  | ${currenttime.getDate()} ${months[(currenttime.getMonth())]} ${currenttime.getFullYear()} | ${time} `);
+};
+currDate.innerText = getcurrentdate();
+
+    </script>
+</body>
+</html>
